@@ -17,18 +17,16 @@ func getAllProducts(completion: @escaping () -> ()){ //@escaping (Results<Place>
         Alamofire.request(url).responseArray(completionHandler: { (response: DataResponse<[Product]>) -> () in
             switch response.result{
             case .success:
-                let placeArray = response.result.value
-                if let _placeArray = placeArray {
-                    for place in _placeArray {
-                        if (place.name != nil){
-                            print(place.name!)
-                            //                            print(place.photos!)
+                let productArray = response.result.value
+                if let _productArray = productArray {
+                    for product in _productArray {
+                        if (product.name != nil){
+                            print(product.name!)
                         }else{
                             print("Invalid parse")
                             break
                         }
                     }
-//                    self.updatePlacesDB(places: _placeArray)
                 }else{
                     print("Error downloading content")
                 }
