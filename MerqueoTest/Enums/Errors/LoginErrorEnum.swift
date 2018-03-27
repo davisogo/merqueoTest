@@ -9,6 +9,7 @@
 import Foundation
 
 enum LoginErrorEnum: Error {
+    case ReadyToGo
     case MissingInfo
     case ErrorOnLogin
     case ErrorOnRequest
