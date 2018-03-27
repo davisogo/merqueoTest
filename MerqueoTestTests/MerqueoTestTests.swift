@@ -33,10 +33,9 @@ class MerqueoTestTests: XCTestCase {
     func testPerformLoginAttempt(){
         let email = "prueba@prueba.com"
         let password = "prueba1234"
-        UserSessionServices.sharedInstance.performLoginAttempt(email: email, password: password) { (resultString) in
-            print("Login result: \(resultString)")
+        UserSessionServices.sharedInstance.performLoginAttempt(email: email, password: password) { (jsonDictionary, error, loginResult)->() in
+            XCTAssertEqual(loginResult, LoginErrorEnum.ReadyToGo)
         }
-        //XCTAssertEqual(, true)
     }
     
     func testPerformanceExample() {

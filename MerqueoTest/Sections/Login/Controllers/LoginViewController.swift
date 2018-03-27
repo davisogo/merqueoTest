@@ -36,12 +36,38 @@ class LoginViewController: UIViewController {
     */
 
     @IBAction func onLoginButtonTap(_ sender: Any) {
-//        "email": "prueba@prueba.com",
-//        "password": "prueba1234"
-        let email = "prueba@prueba.com"
-        let password = "prueba1234"
-        UserSessionServices.sharedInstance.performLoginAttempt(email: email, password: password) { (resultString) in
-            print("Login result: \(resultString)")
+        performLogin()
+    }
+    
+    func performLogin(){
+        let email = self.emailTextField.text ?? "" //"prueba@prueba.com"
+        let password = self.passwordTextfield.text ?? "" //"prueba1234"
+        
+        if email.isEmpty || password.isEmpty {
+            presentAlertView(withErrorMessage: "Los datos están incompletos")
         }
+        UserSessionServices.sharedInstance.performLoginAttempt(email: email, password: password) { (jsonDictionary, error, loginResult)->() in
+            print("Login result: \(String(describing: loginResult))")
+            if(loginResult != LoginErrorEnum.ReadyToGo){
+                switch loginResult!{
+                case LoginErrorEnum.ErrorOnLogin:
+                    self.presentAlertView(withErrorMessage: "Revisa los datos ingresados")
+                    break
+                default:
+                    self.presentAlertView(withErrorMessage: "Revisa tu conexión de internet")
+                    break
+                }
+            }else{
+                self.performSegue(withIdentifier: "goToHomeSegue", sender: nil)
+            }
+        }
+    }
+    
+    func presentAlertView(withErrorMessage message:String){
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { action in
+            print("Okay")
+        }))
+        self.present(alert, animated: true) {}
     }
 }
