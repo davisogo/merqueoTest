@@ -30,6 +30,14 @@ class MerqueoTestTests: XCTestCase {
         XCTAssertEqual(Constants.sharedInstance.productsUrl!, "http://dev.supermercap.com/api/dev/products")
     }
     
+    func testPerformLoginAttempt(){
+        let email = "prueba@prueba.com"
+        let password = "prueba1234"
+        UserSessionServices.sharedInstance.performLoginAttempt(email: email, password: password) { (jsonDictionary, error, loginResult)->() in
+            XCTAssertEqual(loginResult, LoginErrorEnum.ReadyToGo)
+        }
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

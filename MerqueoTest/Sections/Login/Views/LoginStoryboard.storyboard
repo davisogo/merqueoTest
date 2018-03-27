@@ -13,7 +13,7 @@
         <!--Login-->
         <scene sceneID="rDa-iG-7Nh">
             <objects>
-                <viewController title="Login" id="QxY-Zs-Jji" sceneMemberID="viewController">
+                <viewController title="Login" id="QxY-Zs-Jji" customClass="LoginViewController" customModule="MerqueoTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xvQ-7K-V3e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,6 +53,9 @@
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onLoginButtonTap:" destination="QxY-Zs-Jji" eventType="touchUpInside" id="5C9-QT-1Sa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -67,10 +70,23 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="i2f-bd-pvX"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="sHW-DR-bZZ" id="Rh0-8s-WYx"/>
+                        <outlet property="passwordTextfield" destination="Usm-QB-ZfD" id="jvh-sJ-Yiz"/>
+                        <segue destination="GZt-wj-WP9" kind="show" identifier="goToHomeSegue" id="86u-VH-s18"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OND-6n-Ksi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-418.39999999999998" y="53.523238380809602"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="jcQ-cj-KMG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="GZt-wj-WP9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fjW-fc-wEp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="165" y="108"/>
         </scene>
     </scenes>
 </document>

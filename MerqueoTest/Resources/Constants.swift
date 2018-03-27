@@ -37,7 +37,7 @@ class Constants{
             let tempDict = NSDictionary(contentsOfFile: path)
             self.plistDict = tempDict as? Dictionary<String, Any>;
             self.baseUrl = tempDict?.object(forKey: "baseUrl") as? String
-            self.loginRoute = tempDict?.object(forKey: "loginUrl") as? String
+            self.loginRoute = tempDict?.object(forKey: "LoginUrl") as? String
             self.productsRoute = tempDict?.object(forKey: "productsUrl") as? String
         }
     }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2C46D9E937FCF05E10B9022F /* Pods_MerqueoTestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EB97AFED06741D893B0DCF /* Pods_MerqueoTestUITests.framework */; };
 		5B9C558DD8127612B79A0D2E /* Pods_MerqueoTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23BB0B1DF99CD7761FA6C53 /* Pods_MerqueoTestTests.framework */; };
+		C156D5C7206A038900D2808B /* UserSessionServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C156D5C6206A038900D2808B /* UserSessionServices.swift */; };
+		C156D5CB206A07E300D2808B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C156D5CA206A07E300D2808B /* LoginViewController.swift */; };
 		C168609D2069DF6A00E47371 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = C168609C2069DF6A00E47371 /* Product.swift */; };
 		C16860A02069E39200E47371 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C168609F2069E39200E47371 /* UserSession.swift */; };
 		C16860A22069E52900E47371 /* ProductServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16860A12069E52900E47371 /* ProductServices.swift */; };
@@ -52,6 +54,8 @@
 		A0CE2BFFF49EF287E1979F95 /* Pods-MerqueoTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MerqueoTestTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MerqueoTestTests/Pods-MerqueoTestTests.release.xcconfig"; sourceTree = "<group>"; };
 		A23BB0B1DF99CD7761FA6C53 /* Pods_MerqueoTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MerqueoTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A47DEE31E48AE68C99EDD0F5 /* Pods-MerqueoTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MerqueoTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-MerqueoTest/Pods-MerqueoTest.release.xcconfig"; sourceTree = "<group>"; };
+		C156D5C6206A038900D2808B /* UserSessionServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionServices.swift; sourceTree = "<group>"; };
+		C156D5CA206A07E300D2808B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C168609C2069DF6A00E47371 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		C168609F2069E39200E47371 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		C16860A12069E52900E47371 /* ProductServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductServices.swift; sourceTree = "<group>"; };
@@ -130,10 +134,27 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C156D5C8206A07A400D2808B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C16860B12069F08B00E47371 /* LoginStoryboard.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C156D5C9206A07CB00D2808B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C156D5CA206A07E300D2808B /* LoginViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		C16860992069DF4100E47371 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				C16860A12069E52900E47371 /* ProductServices.swift */,
+				C156D5C6206A038900D2808B /* UserSessionServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -185,7 +206,8 @@
 		C16860AF2069F05800E47371 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				C16860B12069F08B00E47371 /* LoginStoryboard.storyboard */,
+				C156D5C9206A07CB00D2808B /* Controllers */,
+				C156D5C8206A07A400D2808B /* Views */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -578,6 +600,8 @@
 				C168609D2069DF6A00E47371 /* Product.swift in Sources */,
 				C1D54B322069DD29004993F0 /* AppDelegate.swift in Sources */,
 				C16860A52069E6CB00E47371 /* Constants.swift in Sources */,
+				C156D5C7206A038900D2808B /* UserSessionServices.swift in Sources */,
+				C156D5CB206A07E300D2808B /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
