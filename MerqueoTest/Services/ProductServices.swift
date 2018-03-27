@@ -13,23 +13,22 @@ import ObjectMapper
 import AlamofireObjectMapper
 
 class ProductServices{
-    /*
-     let headers: HTTPHeaders = [
-     "Authorization": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==",
-     "Accept": "application/json"
-     ]
-     
-     Alamofire.request("https://httpbin.org/headers", headers: headers).responseJSON { response in
-     debugPrint(response)
-     }
-     */
-    func getAllProducts(completion: @escaping () -> ()){ //@escaping (Results<Product>) -> Void
+    var productsArray = [Product]()
+    static var sharedInstance = ProductServices()
+
+    func getAllProducts(completion: @escaping ([Product]?, Error?) -> ()){
+        let headers: HTTPHeaders = [
+            "Authorization": UserSession.sharedInstance.userToken,
+            "Accept": "application/json"
+        ]
+        
         if let url = Constants.sharedInstance.productsUrl{
-            Alamofire.request(url).responseArray(completionHandler: { (response: DataResponse<[Product]>) -> () in
+            Alamofire.request(url, headers: headers).responseArray(completionHandler: { [unowned self] (response: DataResponse<[Product]>) -> () in
                 switch response.result{
                 case .success:
                     let productArray = response.result.value
                     if let _productArray = productArray {
+                        self.productsArray = _productArray
                         for product in _productArray {
                             if (product.name != nil){
                                 print(product.name!)
@@ -41,10 +40,11 @@ class ProductServices{
                     }else{
                         print("Error downloading content")
                     }
-                    completion()
+                    completion(self.productsArray, nil)
                     break
                 case .failure(let error):
                     print("Error loading: \(error)")
+                    completion(nil, error)
                     break
                 }
             })

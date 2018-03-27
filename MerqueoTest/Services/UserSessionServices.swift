@@ -12,7 +12,7 @@ import Alamofire
 class UserSessionServices {
     static var sharedInstance = UserSessionServices()
     
-    func performLoginAttempt(email: String, password: String,completion: @escaping (_ status: Dictionary<String, Any>?, _ error: Error?, _ loginError: LoginErrorEnum?) -> ()){ //@escaping (Results<Product>) -> Void
+    func performLoginAttempt(email: String, password: String,completion: @escaping (_ status: Dictionary<String, Any>?, _ error: Error?, _ loginError: LoginErrorEnum?) -> ()){
         if let url = Constants.sharedInstance.loginUrl{
             let parameters: Parameters = [
                 "email": email,

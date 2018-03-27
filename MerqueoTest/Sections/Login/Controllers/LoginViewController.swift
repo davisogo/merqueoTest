@@ -45,6 +45,7 @@ class LoginViewController: UIViewController {
         
         if email.isEmpty || password.isEmpty {
             presentAlertView(withErrorMessage: "Los datos están incompletos")
+            return
         }
         UserSessionServices.sharedInstance.performLoginAttempt(email: email, password: password) { (jsonDictionary, error, loginResult)->() in
             print("Login result: \(String(describing: loginResult))")

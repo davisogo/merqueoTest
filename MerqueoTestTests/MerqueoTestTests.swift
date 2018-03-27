@@ -38,6 +38,12 @@ class MerqueoTestTests: XCTestCase {
         }
     }
     
+    func testGetAllProducts(){
+        ProductServices.sharedInstance.getAllProducts { (products, error) in
+            
+        }
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

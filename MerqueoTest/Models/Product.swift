@@ -18,14 +18,14 @@ import ObjectMapper_Realm
  "price": 7990,
  "stock": 181
  */
-class Product:Object, Mappable{
-    @objc dynamic var _id: String?
+class Product: Object, Mappable{
+    @objc dynamic var id: Int = 0
     @objc dynamic var name: String?
     @objc dynamic var price: Int = 0
     @objc dynamic var stock : Int = 0
     
     override static func primaryKey() -> String? {
-        return "_id"
+        return "id"
     }
     //Impl. of Mappable protocol
     required convenience init?(map: Map) {
@@ -33,7 +33,7 @@ class Product:Object, Mappable{
     }
     
     func mapping(map: Map) {
-        _id <- map["id"]
+        id <- map["id"]
         name <- map["name"]
         price <- map["price"]
         stock <- map["stock"]
