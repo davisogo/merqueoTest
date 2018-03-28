@@ -13,6 +13,7 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet var productName: UILabel!
     @IBOutlet var productPrice: UILabel!
     @IBOutlet var productStock: UILabel!
+    weak var delegate: CellBehaviourDelegate?
     var product: ProductViewData!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +26,8 @@ class ProductTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setRowData(productViewData: ProductViewData){
+    func setRowData(productViewData: ProductViewData, delegate: CellBehaviourDelegate){
+        self.delegate = delegate
         product = productViewData
         productName.text = product.name
         productPrice.text = "$ \(product.price)"
@@ -33,6 +35,8 @@ class ProductTableViewCell: UITableViewCell {
     }
     
     @IBAction func onBuyButtonTap(_ sender: Any) {
-        
+        if let _delegate = delegate {
+            _delegate.onAddToCartTapped(productData: product)
+        }
     }
 }

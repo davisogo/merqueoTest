@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol CellBehaviourDelegate: class {
+    func onAddToCartTapped(productData: ProductViewData)
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
@@ -35,6 +39,15 @@ class ViewController: UIViewController {
     }
 
 }
+
+extension ViewController: CellBehaviourDelegate{
+    func onAddToCartTapped(productData: ProductViewData) {
+        //Add to cart singleton
+        print("My id was tapped: \(productData.id)")
+    }
+}
+
+
 
 extension ViewController: ProductView{
     func startLoading() {
@@ -71,7 +84,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = (tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell") as! ProductTableViewCell)
-        cell.setRowData(productViewData: productsToDisplay[indexPath.row])
+        cell.setRowData(productViewData: productsToDisplay[indexPath.row], delegate: self)
         return cell
     }
     

@@ -29,6 +29,7 @@ protocol ProductView: NSObjectProtocol {
 class ProductPresenter {
     fileprivate let productService:ProductServices
     weak fileprivate var productView : ProductView?
+    var products = [Product]()
     
     init(productService:ProductServices){
         self.productService = productService
@@ -49,20 +50,24 @@ class ProductPresenter {
             if(products?.count == 0){
                 self?.productView?.setEmptyProducts()
             }else{
-                //                let mappedProducts = products.map({ (product) -> () in
-                //                    return ProductViewData.initWithProduct(product: product)
-                //                })
                 var mappedProducts = [ProductViewData]()
-                
                 if let _products = products{
                     for product in _products{
                         mappedProducts.append(ProductViewData.initWithProduct(product: product))
                     }
                 }
-                
                 self?.productView?.setProducts(mappedProducts)
             }
         }
-        
+    }
+    
+    func getProductById(productId: Int) -> Product?{
+        if let i = products.index(where: { (product) -> Bool in
+            product.id == productId
+        }){
+            return products[i]
+        }else{
+            return nil
+        }
     }
 }

@@ -15,8 +15,17 @@ import AlamofireObjectMapper
 class ProductServices{
     var productsArray = [Product]()
     static var sharedInstance = ProductServices()
-
+    
+    func removeAProductFromStock(product: Product){
+        
+    }
+    
     func getAllProducts(completion: @escaping ([Product]?, Error?) -> ()){
+        
+        if(productsArray.count > 0){
+            completion(self.productsArray, nil)
+        }
+        
         let headers: HTTPHeaders = [
             "Authorization": UserSession.sharedInstance.userToken,
             "Accept": "application/json"
